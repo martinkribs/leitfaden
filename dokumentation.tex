@@ -1,0 +1,328 @@
+% Dokumentklasse
+\documentclass[11pt,titlepage]{report} % Für längere Arbeiten mit Kapiteln und Abschnitten, geeignet für Berichte und Dokumentationen.
+
+% Sprachunterstützung
+\usepackage[ngerman]{babel} % Sorgt für sprachspezifische Regeln wie Silbentrennung und deutsche Bezeichnungen.
+
+% Symbole und Icons
+\usepackage{fontawesome} % Ermöglicht die Nutzung von Font Awesome Icons.
+
+% Seitenlayout
+\usepackage[a4paper,lmargin={3.5cm},rmargin={2.5cm},tmargin={3cm},bmargin={2cm},headsep=0.5cm,headheight=1.5cm]{geometry} % Einstellung von Seitenrändern für A4-Papier.
+
+% Mathematische Pakete
+\usepackage{amssymb} % Enthält zusätzliche mathematische Symbole.
+\usepackage{amsthm} % Unterstützung für Theoreme, Definitionen und Beweise.
+\usepackage{amsmath} % Verbesserte Darstellung von mathematischen Formeln.
+
+% Grafiken und Bilder
+\usepackage{graphicx} % Ermöglicht das Einfügen von Bildern und Grafiken.
+\usepackage{svg} % Ermöglicht das Einfügen von SVG-Grafiken.
+
+% Typografie
+\usepackage{microtype} % Verbessert die Lesbarkeit und Silbentrennung.
+\usepackage{fontspec} % Für die Verwendung von TrueType- und OpenType-Schriften.
+
+% Hyperlinks
+\usepackage[hidelinks]{hyperref}% Fügt klickbare Hyperlinks ein, ohne sie farblich hervorzuheben.
+
+% Abkürzungen
+\usepackage[footnote,printonlyused]{acronym} % Verwaltung von Abkürzungen mit Fußnotenoption.
+
+% Kopf- und Fußzeilen
+\usepackage{fancyhdr} % Ermöglicht die Gestaltung von Kopf- und Fußzeilen.
+
+% Farben
+\usepackage{xcolor} % Definiert und verwendet Farben im Dokument.
+
+% Weitere mathematische Symbole
+\usepackage{amsfonts} % Zusätzliche Schriftarten für mathematische Symbole.
+
+% Tabellen
+\usepackage{booktabs} % Verbesserte Gestaltung von Tabellen.
+\usepackage{enumitem} % Anpassung von Listen und Aufzählungen.
+
+% Literaturverwaltung
+\usepackage[style=chicago-notes, backend=biber, sorting=nyt, dashed=false, giveninits=true]{biblatex} % Für Literaturverzeichnisse nach Chicago-Stil mit Fußnoten.
+
+% Zitate
+\usepackage{csquotes} % Korrekte Darstellung von Zitaten, z. B. Anführungszeichen.
+
+% Positionierung
+\usepackage{float} % Präzise Platzierung von Tabellen und Abbildungen.
+
+% Zeilenabstand
+\usepackage[onehalfspacing]{setspace} % Erzeugt 1,5-fachen Zeilenabstand.
+
+% Glossare
+\usepackage[toc=false]{glossaries-extra} % Verwaltung von Glossaren ohne Inhaltsverzeichnis-Eintrag.
+
+% Tabellenfarben
+\usepackage{colortbl} % Ermöglicht das Einfärben von Tabellenzellen.
+
+% Tabellen- und Spaltenformatierung
+\usepackage{array} % Zusätzliche Optionen für Tabellen und Spalten.
+
+% Diagramme und Visualisierungen
+\usepackage{tikz} % Erstellung von Vektorgraphiken und Diagrammen.
+\usepackage{pgfplots} % Erstellung von Plots und Grafiken.
+
+\usetikzlibrary{shapes,arrows,positioning,fit,backgrounds,calc,matrix,decorations.pathreplacing,decorations.markings,shapes.geometric,mindmap}
+
+% PDF-Integration
+\usepackage{pdfpages} % Einfügen von ganzen PDF-Dokumenten.
+
+% Querformat
+\usepackage{pdflscape} % Ermöglicht die Nutzung von Seiten im Querformat.
+
+% Nummerierungsanpassung
+\usepackage{chngcntr} % Ermöglicht Änderungen der Nummerierung von Kapiteln und Abschnitten.
+
+% Inhaltsverzeichnis
+\usepackage{tocloft} % Anpassung des Layouts des Inhaltsverzeichnisses.
+
+% Titelgestaltung
+\usepackage{titlesec} % Anpassung von Kapitel- und Abschnittstiteln.
+
+% Ausrichtung
+\usepackage{ragged2e} % Ermöglicht den Blocksatz oder Flattersatz.
+
+\pgfplotsset{compat=1.18}
+
+% Zähler für Abbildungen und Tabellen an Abschnitte binden
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{equation}{section}
+
+% Pfade für Bilder und andere Ressourcen
+\graphicspath{{bilder/}}
+
+% Arial als Hauptschrift (11pt)
+\setmainfont{Arial}
+
+% Bibliographie
+\addbibresource{quellen.bib}
+
+% Farben
+\definecolor{link}{HTML}{0000EE}
+
+% Absatzformatierung
+\setlength{\parindent}{0pt}           % Keine Einrückung am Absatzbeginn
+\setlength{\parskip}{6pt}             % 6pt Abstand nach jedem Absatz
+
+% Anpassung \listoffigures
+\renewcommand{\cftloftitlefont}{\Large\bfseries}
+\renewcommand{\cftbeforeloftitleskip}{10pt}
+\renewcommand{\cftafterloftitleskip}{10pt}
+
+% Anpassung \listoftables
+\renewcommand{\cftlottitlefont}{\Large\bfseries}
+\renewcommand{\cftbeforelottitleskip}{10pt}
+\renewcommand{\cftafterlottitleskip}{10pt}
+
+% Anpassung \tableofcontents
+\renewcommand{\cfttoctitlefont}{\Large\bfseries}
+\renewcommand{\cftbeforetoctitleskip}{10pt}
+\renewcommand{\cftaftertoctitleskip}{10pt}
+
+% Abstand nach Nummern im Abbildungs- und Tabellenverzeichnis
+\setlength{\cftfignumwidth}{3em}
+\setlength{\cfttabnumwidth}{3em}
+
+% Überschriftenformatierung
+\titleformat{\chapter}
+  {\fontsize{11}{16.5}\bfseries\raggedright}
+  {\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{6pt}
+
+\titleformat{\section}
+  {\fontsize{11}{16.5}\bfseries\raggedright}
+  {\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{0pt}{6pt}
+
+\titleformat{\subsection}
+  {\fontsize{11}{16.5}\bfseries\raggedright}
+  {\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{0pt}{6pt}
+
+\titleformat{\subsubsection}
+  {\fontsize{11}{16.5}\bfseries\raggedright}
+  {\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{0pt}{6pt}
+
+% Blocksatz für Fließtext
+\justifying
+
+% Bibliographie-Einstellungen für Chicago-Stil
+\DeclareNameAlias{sortname}{family-given}
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
+\DeclareDelimFormat{multinamedelim}{\space\addcomma\space}
+\DeclareDelimFormat{finalnamedelim}{\space\&\space}
+\DefineBibliographyStrings{german}{andothers = {{et\,al\adddot}},}
+\renewcommand{\mkbibnamefamily}[1]{\textsc{#1}}
+
+% Benutzerdefinierte Zitatbefehle
+\newcommand{\customcite}[2][]{%
+  \ifblank{#1}{%
+    \footcite{#2}%
+  }{%
+    \footcite[#1]{#2}%
+  }%
+}
+
+% Fix lange URLs
+\newcommand*\oldurlbreaks{}
+\let\oldurlbreaks=\UrlBreaks
+\renewcommand{\UrlBreaks}{\oldurlbreaks
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v
+  %\do\w%
+  \do\x\do\y\do\z
+  \do?\do&\do_
+  \do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9
+  \do:\do/
+  }
+\urlstyle{same}
+
+% Befehle für Links und Verweise
+\newcommand{\sct}[2]{\textcolor{link}{\hyperref[#1]{#2}}}
+\newcommand{\gl}[1]{\gls{#1}}
+
+% Inhaltsverzeichnis-Einrückung
+\setlength{\cftsubsecindent}{1.5em}
+\setlength{\cftsubsubsecindent}{3.0em}
+
+% Glossar/Abkürzungsverzeichnis
+\makenoidxglossaries
+\input{zusatz/glossary}
+\glsaddall
+
+% Customize page numbering on right hand side
+\fancypagestyle{plain}{%
+  \fancyhf{} %clear all header and footer fields
+  \rhead{\thepage}
+}%
+\fancyhf{} %clear all header and footer fields
+
+% Seitenstil für alle Seiten
+\pagestyle{fancy}
+\rhead{\fontsize{9}{13.5}\selectfont\thepage} % Seitenzahl oben rechts, 9pt
+\renewcommand{\headrulewidth}{0pt} % Keine Linie unter der Kopfzeile
+
+% Anpassung der Verzeichnis-Überschriften
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+\renewcommand{\listfigurename}{Abbildungsverzeichnis}
+\renewcommand{\listtablename}{Tabellenverzeichnis}
+\renewcommand{\bibname}{Quellen- und Literaturverzeichnis}
+
+% Setze PDF-Metadaten
+\hypersetup{
+  pdftitle={Titel},
+  pdfauthor={Mustermensch},
+  pdfsubject={Subjekt},
+}
+
+\begin{document}
+
+% Schmutztitel (Vorderdeckel)
+\begin{titlepage}
+\thispagestyle{empty}
+\input{zusatz/vorderseite}
+\end{titlepage}
+
+% Leeres weißes Blatt
+\newpage
+\thispagestyle{empty}
+\quad 
+\newpage
+
+% Haupttitel
+\begin{titlepage}
+\thispagestyle{empty}
+\input{zusatz/titelseite}
+\end{titlepage}
+
+% Deaktiviere Einrückungen
+\setlength\parindent{0pt}
+
+\begin{onehalfspace}
+    % Römische Seitennummerierung für Verzeichnisse
+    \pagenumbering{roman}
+    
+    % Zusammenfassung (deutsch) und Abstract (englisch)
+    \input{zusatz/zusammenfassung}
+    \newpage
+    
+    % Optionale Vorbemerkung
+    % Auskommentieren, wenn nicht benötigt
+    \input{zusatz/vorbemerkung}
+    \newpage
+    
+    % Inhaltsverzeichnis
+    \phantomsection
+    \addcontentsline{toc}{section}{Inhaltsverzeichnis}
+    \tableofcontents
+    \newpage
+    
+    % Abkürzungsverzeichnis
+    \phantomsection
+    \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+    \label{sec:Abkuerzungsverzeichnis}
+    \printnoidxglossary[title={Abkürzungsverzeichnis}, type=main, nonumberlist]
+    \newpage
+    
+    % Abbildungsverzeichnis
+    \phantomsection
+    \addcontentsline{toc}{section}{Abbildungsverzeichnis}
+    \listoffigures
+    \newpage
+    
+    % Tabellenverzeichnis
+    \phantomsection
+    \addcontentsline{toc}{section}{Tabellenverzeichnis}
+    \listoftables
+    \newpage
+    
+    % Promptverzeichnis (für KI-Prompts)
+    \input{zusatz/promptverzeichnis}
+    \newpage
+
+    % Hauptteil mit arabischer Seitennummerierung
+    \pagenumbering{arabic}
+
+    % Kapitel einbinden
+    \foreach \i in {10,11} {%
+      \edef\FileName{abschnitte/\i-kapitel}%
+
+      \IfFileExists{\FileName}{%
+        \input{\FileName}
+      }
+      {%
+        %file does not exist
+      }
+	  }
+
+    % Literaturverzeichnis
+    \newpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Quellen- und Literaturverzeichnis}
+    \label{chap:Quellen-und-Literaturverzeichnis}
+    \printbibliography[title={Quellen- und Literaturverzeichnis}]
+    
+    % Anhänge
+    \newpage
+    \appendix
+    \chapter*{Anhang}
+    \addcontentsline{toc}{chapter}{Anhang}
+    \label{chap:Anhang}
+    \input{anhaenge/anhang}
+
+    % Eigenständigkeitserklärung
+    \newpage
+    \input{zusatz/eigenstaendigkeitserklaerung}
+    
+    % Lebenslauf (nur für Abschlussarbeiten)
+    \newpage
+    \input{zusatz/lebenslauf}
+
+\end{onehalfspace}
+\end{document}
