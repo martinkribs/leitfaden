@@ -49,6 +49,15 @@
 % Zitate
 \usepackage{csquotes} % Korrekte Darstellung von Zitaten, z. B. Anführungszeichen.
 
+% Fußnoten-Formatierung
+\usepackage[hang,flushmargin,bottom,multiple]{footmisc} % Keine Einrückung, mehr Abstand zwischen Fußnoten
+\setlength{\footnotesep}{12pt} % Abstand zwischen Fußnoten
+
+% Fußnotenzahlen mit Punkt danach
+\makeatletter
+\renewcommand\@makefnmark{\mbox{\normalfont\@thefnmark.}}
+\makeatother
+
 % Positionierung
 \usepackage{float} % Präzise Platzierung von Tabellen und Abbildungen.
 
@@ -121,6 +130,11 @@
 \renewcommand{\cftbeforetoctitleskip}{10pt}
 \renewcommand{\cftaftertoctitleskip}{10pt}
 
+% Füge Punkte für Kapitel im Inhaltsverzeichnis hinzu
+\renewcommand{\cftchapaftersnum}{.}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand{\cftsecaftersnum}{.}
+
 % Abstand nach Nummern im Abbildungs- und Tabellenverzeichnis
 \setlength{\cftfignumwidth}{3em}
 \setlength{\cfttabnumwidth}{3em}
@@ -128,22 +142,22 @@
 % Überschriftenformatierung
 \titleformat{\chapter}
   {\fontsize{11}{16.5}\bfseries\raggedright}
-  {\thechapter}{1em}{}
+  {\thechapter.}{1em}{}
 \titlespacing*{\chapter}{0pt}{0pt}{6pt}
 
 \titleformat{\section}
   {\fontsize{11}{16.5}\bfseries\raggedright}
-  {\thesection}{1em}{}
+  {\thesection.}{1em}{}
 \titlespacing*{\section}{0pt}{0pt}{6pt}
 
 \titleformat{\subsection}
   {\fontsize{11}{16.5}\bfseries\raggedright}
-  {\thesubsection}{1em}{}
+  {\thesubsection.}{1em}{}
 \titlespacing*{\subsection}{0pt}{0pt}{6pt}
 
 \titleformat{\subsubsection}
   {\fontsize{11}{16.5}\bfseries\raggedright}
-  {\thesubsubsection}{1em}{}
+  {\thesubsubsection.}{1em}{}
 \titlespacing*{\subsubsection}{0pt}{0pt}{6pt}
 
 % Blocksatz für Fließtext
@@ -183,24 +197,59 @@
 \newcommand{\sct}[2]{\textcolor{link}{\hyperref[#1]{#2}}}
 \newcommand{\gl}[1]{\gls{#1}}
 
+% Promptverzeichnis erstellen
+\newcommand{\listpromptname}{Promptverzeichnis}
+\newlistof{prompt}{prm}{\listpromptname}
+% Formatierung des Promptverzeichnis-Titels (wie bei anderen Verzeichnissen)
+\renewcommand{\cftprmtitlefont}{\Large\bfseries}
+\renewcommand{\cftbeforeprmtitleskip}{10pt}
+\renewcommand{\cftafterprmtitleskip}{10pt}
+
+% Befehl für Prompt-Referenzen
+\newcounter{promptcounter}
+\newcommand{\promptentry}[1]{%
+  \refstepcounter{promptcounter}%
+  \addcontentsline{prm}{prompt}{\protect\numberline{\thepromptcounter}#1}%
+  #1%
+}
+
 % Inhaltsverzeichnis-Einrückung
 \setlength{\cftsubsecindent}{1.5em}
 \setlength{\cftsubsubsecindent}{3.0em}
+
+% Anhangsverzeichnis erstellen
+\newcommand{\listappendixname}{Verzeichnis der Anhänge}
+\newlistof{appendix}{app}{\listappendixname}
+
+% Formatierung des Anhangsverzeichnis-Titels (wie bei anderen Verzeichnissen)
+\renewcommand{\cftapptitlefont}{\Large\bfseries}
+\renewcommand{\cftbeforeapptitleskip}{10pt}
+\renewcommand{\cftafterapptitleskip}{10pt}
+
+\newcommand{\appendixentry}[1]{%
+  \refstepcounter{appendix}%
+  \addcontentsline{app}{appendix}{\protect\numberline{\theappendix}#1}%
+}
 
 % Glossar/Abkürzungsverzeichnis
 \makenoidxglossaries
 \input{zusatz/glossary}
 \glsaddall
+% Anpassung der Kopfzeilen
+% Behält die Nummer bei nummerierten Kapiteln, entfernt nur das Wort "Kapitel"
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}}
 
-% Customize page numbering on right hand side
+% Seitenstil für alle Seiten, einschließlich der ersten Seite eines Kapitels
 \fancypagestyle{plain}{%
-  \fancyhf{} %clear all header and footer fields
-  \rhead{\thepage}
-}%
-\fancyhf{} %clear all header and footer fields
+  \fancyhf{} % Alle Kopf- und Fußzeilenfelder löschen
+  \lhead{\nouppercase{\leftmark}} % Kapitelüberschrift oben links
+  \rhead{\thepage} % Seitenzahl oben rechts
+}
 
-% Seitenstil für alle Seiten
+% Seitenstil für normale Seiten
 \pagestyle{fancy}
+\fancyhf{} % Alle Kopf- und Fußzeilenfelder löschen
+\lhead{\nouppercase{\leftmark}} % Kapitelüberschrift oben links
 \rhead{\fontsize{9}{13.5}\selectfont\thepage} % Seitenzahl oben rechts, 9pt
 \lhead{\fancyplain{}{\nouppercase{\leftmark}}} % Kapitelüberschrift oben links
 
@@ -231,7 +280,8 @@
 % Haupttitel
 %\input{zusatz/haupttitel}
 
-% Leitfaden Titelseite
+% Leitfaden Titelseite (ohne Kopfzeile)
+\thispagestyle{empty}
 \input{zusatz/leitfaden}
 
 % Deaktiviere Einrückungen
@@ -291,7 +341,10 @@
     \newpage
     
     % Promptverzeichnis (für KI-Prompts)
-    \input{zusatz/promptverzeichnis}
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Promptverzeichnis}
+    \markboth{Promptverzeichnis}{} % Manuelles Setzen der Kopfzeile
+    \listofprompt
     \newpage
 
     % Literaturverzeichnis
@@ -299,23 +352,28 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{Literaturverzeichnis}
     \label{chap:Literaturverzeichnis}
+    \markboth{Literaturverzeichnis}{} % Manuelles Setzen der Kopfzeile
     \printbibliography[title={Literaturverzeichnis}]
+    
+    % Anhangsverzeichnis
+    \newpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Verzeichnis der Anhänge}
+    \listofappendix
+    \newpage
     
     % Anhänge
     \newpage
     \appendix
-    \chapter*{Anhänge}
-    \addcontentsline{toc}{chapter}{Anhänge}
-    \label{chap:Anhaenge}
     \input{anhaenge/anhang}
-
+    
     % Eigenständigkeitserklärung
-    \newpage
-    \input{zusatz/eigenstaendigkeitserklaerung}
+    %\newpage
+    %\input{zusatz/eigenstaendigkeitserklaerung}
     
     % Lebenslauf (nur für Abschlussarbeiten)
-    \newpage
-    \input{zusatz/lebenslauf}
+    %\newpage
+    %\input{zusatz/lebenslauf}
 
 \end{onehalfspace}
 \end{document}
