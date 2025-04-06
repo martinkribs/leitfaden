@@ -40,6 +40,7 @@
 
 % Tabellen
 \usepackage{booktabs} % Verbesserte Gestaltung von Tabellen.
+\usepackage{multirow} % Ermöglicht Zellen über mehrere Zeilen in Tabellen.
 \usepackage{enumitem} % Anpassung von Listen und Aufzählungen.
 
 % Literaturverwaltung
@@ -88,11 +89,6 @@
 \usepackage{ragged2e} % Ermöglicht den Blocksatz oder Flattersatz.
 
 \pgfplotsset{compat=1.18}
-
-% Zähler für Abbildungen und Tabellen an Abschnitte binden
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\counterwithin{equation}{section}
 
 % Pfade für Bilder und andere Ressourcen
 \graphicspath{{bilder/}}
@@ -206,10 +202,10 @@
 % Seitenstil für alle Seiten
 \pagestyle{fancy}
 \rhead{\fontsize{9}{13.5}\selectfont\thepage} % Seitenzahl oben rechts, 9pt
-\renewcommand{\headrulewidth}{0pt} % Keine Linie unter der Kopfzeile
+\lhead{\fancyplain{}{\nouppercase{\leftmark}}} % Kapitelüberschrift oben links
 
 % Anpassung der Verzeichnis-Überschriften
-\renewcommand{\contentsname}{Inhaltsverzeichnis}
+\renewcommand{\contentsname}{Inhalt}
 \renewcommand{\listfigurename}{Abbildungsverzeichnis}
 \renewcommand{\listtablename}{Tabellenverzeichnis}
 \renewcommand{\bibname}{Quellen- und Literaturverzeichnis}
@@ -224,22 +220,19 @@
 \begin{document}
 
 % Schmutztitel (Vorderdeckel)
-\begin{titlepage}
-\thispagestyle{empty}
-\input{zusatz/vorderseite}
-\end{titlepage}
+%\input{zusatz/schmutztitel}
 
 % Leeres weißes Blatt
-\newpage
-\thispagestyle{empty}
-\quad 
-\newpage
+%\newpage
+%\thispagestyle{empty}
+%\quad 
+%\newpage
 
 % Haupttitel
-\begin{titlepage}
-\thispagestyle{empty}
-\input{zusatz/titelseite}
-\end{titlepage}
+%\input{zusatz/haupttitel}
+
+% Leitfaden Titelseite
+\input{zusatz/leitfaden}
 
 % Deaktiviere Einrückungen
 \setlength\parindent{0pt}
@@ -249,36 +242,51 @@
     \pagenumbering{roman}
     
     % Zusammenfassung (deutsch) und Abstract (englisch)
-    \input{zusatz/zusammenfassung}
-    \newpage
+    %\input{zusatz/zusammenfassung}
+    %\newpage
     
+    % Inhaltsverzeichnis
+    \phantomsection
+    \tableofcontents
+    \newpage
+
     % Optionale Vorbemerkung
     % Auskommentieren, wenn nicht benötigt
     \input{zusatz/vorbemerkung}
     \newpage
-    
-    % Inhaltsverzeichnis
-    \phantomsection
-    \addcontentsline{toc}{section}{Inhaltsverzeichnis}
-    \tableofcontents
+
+    % Hauptteil mit arabischer Seitennummerierung
+    \pagenumbering{arabic}
+
+    % Optionale Einleitung und Struktur
+    % Auskommentieren, wenn nicht benötigt
+    \input{zusatz/einleitung-struktur}
     \newpage
-    
+
+    % Kapitel einbinden
+   \input{abschnitte/01-thema-forschungsfrage}
+   \input{abschnitte/02-strukturierung}
+   \input{abschnitte/03-konzeptionell-theoretische-grundlagen}
+   \input{abschnitte/04-durchfuehrung}
+   \input{abschnitte/05-quellen-zitierweise}
+   \input{abschnitte/06-form-stil}
+
     % Abkürzungsverzeichnis
     \phantomsection
-    \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+    \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
     \label{sec:Abkuerzungsverzeichnis}
     \printnoidxglossary[title={Abkürzungsverzeichnis}, type=main, nonumberlist]
     \newpage
     
     % Abbildungsverzeichnis
     \phantomsection
-    \addcontentsline{toc}{section}{Abbildungsverzeichnis}
+    \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
     \listoffigures
     \newpage
     
     % Tabellenverzeichnis
     \phantomsection
-    \addcontentsline{toc}{section}{Tabellenverzeichnis}
+    \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
     \listoftables
     \newpage
     
@@ -286,34 +294,19 @@
     \input{zusatz/promptverzeichnis}
     \newpage
 
-    % Hauptteil mit arabischer Seitennummerierung
-    \pagenumbering{arabic}
-
-    % Kapitel einbinden
-    \foreach \i in {10,11} {%
-      \edef\FileName{abschnitte/\i-kapitel}%
-
-      \IfFileExists{\FileName}{%
-        \input{\FileName}
-      }
-      {%
-        %file does not exist
-      }
-	  }
-
     % Literaturverzeichnis
     \newpage
     \phantomsection
-    \addcontentsline{toc}{chapter}{Quellen- und Literaturverzeichnis}
-    \label{chap:Quellen-und-Literaturverzeichnis}
-    \printbibliography[title={Quellen- und Literaturverzeichnis}]
+    \addcontentsline{toc}{chapter}{Literaturverzeichnis}
+    \label{chap:Literaturverzeichnis}
+    \printbibliography[title={Literaturverzeichnis}]
     
     % Anhänge
     \newpage
     \appendix
-    \chapter*{Anhang}
-    \addcontentsline{toc}{chapter}{Anhang}
-    \label{chap:Anhang}
+    \chapter*{Anhänge}
+    \addcontentsline{toc}{chapter}{Anhänge}
+    \label{chap:Anhaenge}
     \input{anhaenge/anhang}
 
     % Eigenständigkeitserklärung
