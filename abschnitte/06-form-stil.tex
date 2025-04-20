@@ -124,10 +124,10 @@ Ihre Arbeit lassen Sie durch eine Klebebindung mit unbedrucktem Textilrücken bi
 Die Farbe des Kartons für den Vorder- und Rückdeckel richtet sich nach Ihrem Studiengang. Sie finden die korrekte Farbe für Ihre Arbeit in der folgenden Tabelle \ref{tab:einbandfarben}.
 
 \begin{table}[H]
-\label{tab:einbandfarben}
-    \begin{tabular}{l|l|l}
+    \centering
+    \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{2.5cm}}
     \textbf{Fachbereich} & \textbf{Studiengang} & \textbf{Einbandfarbe} \\
-    \hline
+    \specialrule{1.5pt}{0pt}{0pt}
     \multirow{5}{*}{Ingenieurwesen} & Elektrotechnik (B.Eng.) & Schwarz \\
     \cline{2-3}
     & Informatik (B.Sc.) & Hellgrün \\
@@ -139,7 +139,7 @@ Die Farbe des Kartons für den Vorder- und Rückdeckel richtet sich nach Ihrem S
     & Wirtschaftsingenieurwesen (B.Eng.) & Dunkelgrün \\
     \cline{2-3}
     & Alle Masterstudiengänge & Dunkelblau \\
-    \hline
+    \specialrule{1.5pt}{0pt}{0pt}
     \multirow{17}{*}{\begin{tabular}[c]{@{}l@{}}Wirtschaft,\\ Psychologie \&\\ Recht\end{tabular}} & Betriebswirtschaftslehre (B.A.) & Gelb \\
     \cline{2-3}
     & Compliance \& Corporate Security (LL.M.) & Rot \\
@@ -173,8 +173,8 @@ Die Farbe des Kartons für den Vorder- und Rückdeckel richtet sich nach Ihrem S
     & Wirtschaftspsychologie (M.Sc.) & Orange \\
     \cline{2-3}
     & Wirtschaftsrecht (LL.B.) & Rot \\
-    \hline
-    \multirow{6}{*}{\begin{tabular}[c]{@{}l@{}}Medien, Marketing \&\\ Innovation\end{tabular}} & Digital Business Management (M.A.) & Weiß \\
+    \specialrule{1.5pt}{0pt}{0pt}
+    \multirow{6}{*}{\begin{tabular}[c]{@{}l@{}}Medien,\\ Marketing \&\\ Innovation\end{tabular}} & Digital Business Management (M.A.) & Weiß \\
     \cline{2-3}
     & International Marketing \& Media Management (M.A.) & Weiß \\
     \cline{2-3}
@@ -183,19 +183,20 @@ Die Farbe des Kartons für den Vorder- und Rückdeckel richtet sich nach Ihrem S
     & Mediendesign (B.A.) & Braun oder eigene \\
     \cline{2-3}
     & User Experience Design (M.A.) & Weiß oder eigene \\
-    \hline
-    \multirow{5}{*}{\begin{tabular}[c]{@{}l@{}}Medizinökonomie \&\\ Gesundheit\end{tabular}} & Erweiterte Pflegepraxis (B.Sc.) & Magenta \\
+    \specialrule{1.5pt}{0pt}{0pt}
+    \multirow{5}{*}{\begin{tabular}[c]{@{}l@{}}Medizinökonomie\\ \&\\ Gesundheit\end{tabular}} & Erweiterte Pflegepraxis (B.Sc.) & Magenta \\
     \cline{2-3}
     & Gesundheitsökonomie (M.Sc.) & Magenta \\
     \cline{2-3}
-    & \begin{tabular}[c]{@{}l@{}}Medizinökonomie \& Digitales Management (B.Sc.)\\ (ehem. Medizinökonomie)\end{tabular} & Magenta \\
+    & \begin{tabular}[c]{@{}l@{}}Medizinökonomie \&\\ Digitales Management (B.Sc.)\\ (ehem. Medizinökonomie)\end{tabular} & Magenta \\
     \cline{2-3}
     & Molekulare Biomedizin (B.Sc.) & Magenta \\
     \cline{2-3}
     & Physiotherapie (B.Sc.) & Magenta \\
     \hline
-    \end{tabular}
+    \end{tabularx}
 \caption{Übersicht der Einbandfarben für Haus- und Abschlussarbeiten an der Rheinischen Hochschule Köln.}
+\label{tab:einbandfarben}
 \end{table}
 
 \section{Die Tabellen und Abbildungen sind gut lesbar}

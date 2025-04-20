@@ -36,6 +36,7 @@
 \usepackage{booktabs} % Verbesserte Gestaltung von Tabellen.
 \usepackage{multirow} % Ermöglicht Zellen über mehrere Zeilen in Tabellen.
 \usepackage{enumitem} % Anpassung von Listen und Aufzählungen.
+\usepackage{tabularx} % Erweiterte Tabellenfunktionen, insbesondere für Spaltenbreiten.
 
 % Literaturverwaltung
 \usepackage[notes,backend=biber,autocite=footnote,ibidtracker=false]{biblatex-chicago} % Für Literaturverzeichnisse nach Chicago-Stil (Notes and Bibliography).
@@ -261,6 +262,12 @@
 \renewcommand{\listfigurename}{Abbildungsverzeichnis}
 \renewcommand{\listtablename}{Tabellenverzeichnis}
 \renewcommand{\bibname}{Literaturverzeichnis}
+
+% Anpassung der Bezeichnungen für Abbildungen und Tabellen
+\addto\captionsngerman{%
+  \renewcommand{\figurename}{Abb.}%
+  \renewcommand{\tablename}{Tab.}%
+}
 
 % Setze PDF-Metadaten
 \hypersetup{
