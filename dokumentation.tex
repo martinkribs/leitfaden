@@ -231,7 +231,7 @@
 
 \newcommand{\appendixentry}[1]{%
   \refstepcounter{appendix}%
-  \addcontentsline{app}{appendix}{\protect\makebox[\appnumwidth][l]{Anhang \theappendix:}#1}%
+  \addcontentsline{app}{appendix}{\protect\makebox[\appnumwidth][l]{Anhang \Alph{appendix}:}#1}%
 }
 
 % Glossar
@@ -376,6 +376,16 @@
     % Anhänge
     \newpage
     \appendix
+    % Spezielle Formatierung für Anhänge
+    \titleformat{\chapter}
+      {\fontsize{11}{16.5}\bfseries\raggedright}
+      {Anhang \thechapter:}{0.5em}{}
+    % Spezielle Formatierung für Anhänge in der Kopfzeile
+    \renewcommand{\chaptermark}[1]{\markboth{Anhang \thechapter: #1}{}}
+    % Spezielle Formatierung für Anhänge im Inhaltsverzeichnis
+    \addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{Anhang }}
+    \addtocontents{toc}{\protect\renewcommand{\protect\cftchapaftersnum}{: }}
+    \addtocontents{toc}{\protect\setlength{\protect\cftchapnumwidth}{5.5em}}
     \input{anhaenge/anhang}
     
     % Eigenständigkeitserklärung
