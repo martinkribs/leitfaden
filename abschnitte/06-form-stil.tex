@@ -101,8 +101,18 @@ Der Schmutztitel (Vorderdeckel, auf Karton gedruckt) enthält folgende Informati
 \item Sommer- oder Wintersemester
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \fbox{\includegraphics[width=0.95\textwidth]{bilder/Schmutztitel.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \fbox{\includegraphics[width=0.95\textwidth]{bilder/Haupttitel.png}}
+\end{minipage}
+
 \caption[Beispielhafter Schmutztitel und Haupttitel für Haus- und Abschlussarbeiten an der Rheinischen Hochschule Köln,]{Beispielhafter Schmutztitel (li.) und Haupttitel (re.) für Haus- und Abschlussarbeiten an der Rheinischen Hochschule Köln, eigene Darstellung.}
 \label{fig:schmutztitel-haupttitel}
 \end{figure}
@@ -115,77 +125,76 @@ Die Farbe des Kartons für den Vorder- und Rückdeckel richtet sich nach Ihrem S
 
 \begin{table}[H]
 \label{tab:einbandfarben}
-\begin{tabular}{|l|l|l|}
-\hline
-\textbf{Fachbereich} & \textbf{Studiengang} & \textbf{Einbandfarbe} \\
-\hline
-\multirow{5}{*}{Ingenieurwesen} & Elektrotechnik (B.Eng.) & Schwarz \\
-\cline{2-3}
- & Informatik (B.Sc.) & Hellgrün \\
-\cline{2-3}
- & Maschinenbau (B.Eng.), alle Fachrichtungen & Dunkelblau \\
-\cline{2-3}
- & Prozesstechnik (B.Sc.) & Hellgrün \\
-\cline{2-3}
- & Wirtschaftsingenieurwesen (B.Eng.) & Dunkelgrün \\
-\cline{2-3}
- & Alle Masterstudiengänge & Dunkelblau \\
-\hline
-\multirow{17}{*}{\begin{tabular}[c]{@{}l@{}}Wirtschaft,\\ Psychologie \&\\ Recht\end{tabular}} & Betriebswirtschaftslehre (B.A.) & Gelb \\
-\cline{2-3}
- & Compliance \& Corporate Security (LL.M.) & Rot \\
-\cline{2-3}
- & Digital Transformation Management (M.A.) & Gelb \\
-\cline{2-3}
- & Entrepreneurship (M.A.) & Gelb \\
-\cline{2-3}
- & General Management (M.A.) & Gelb \\
-\cline{2-3}
- & International Business Management (M.A.) & Gelb \\
-\cline{2-3}
- & MBA International Business (MBA) & Gelb \\
-\cline{2-3}
- & Nachhaltigkeitsmanagement (B.A.) & Gelb \\
-\cline{2-3}
- & Psychologie (B.Sc.) & Orange \\
-\cline{2-3}
- & Steuerrecht (LL.M.) & Rot \\
-\cline{2-3}
- & Unternehmensmanagement (B.A.) & Gelb \\
-\cline{2-3}
- & Werteorientierte Unternehmensführung (M.Sc.) & Gelb \\
-\cline{2-3}
- & Wirtschaftsinformatik (B.Sc.) & Grau \\
-\cline{2-3}
- & Wirtschaftsinformatik (M.Sc.) & Grau \\
-\cline{2-3}
- & Wirtschaftspsychologie (B.Sc.) & Orange \\
-\cline{2-3}
- & Wirtschaftspsychologie (M.Sc.) & Orange \\
-\cline{2-3}
- & Wirtschaftsrecht (LL.B.) & Rot \\
-\hline
-\multirow{6}{*}{\begin{tabular}[c]{@{}l@{}}Medien, Marketing \&\\ Innovation\end{tabular}} & Digital Business Management (M.A.) & Weiß \\
-\cline{2-3}
- & International Marketing \& Media Management (M.A.) & Weiß \\
-\cline{2-3}
- & Media \& Marketing Management (B.A.) & Weiß \\
-\cline{2-3}
- & Mediendesign (B.A.) & Braun oder eigene \\
-\cline{2-3}
- & User Experience Design (M.A.) & Weiß oder eigene \\
-\hline
-\multirow{5}{*}{\begin{tabular}[c]{@{}l@{}}Medizinökonomie \&\\ Gesundheit\end{tabular}} & Erweiterte Pflegepraxis (B.Sc.) & Magenta \\
-\cline{2-3}
- & Gesundheitsökonomie (M.Sc.) & Magenta \\
-\cline{2-3}
- & \begin{tabular}[c]{@{}l@{}}Medizinökonomie \& Digitales Management (B.Sc.)\\ (ehem. Medizinökonomie)\end{tabular} & Magenta \\
-\cline{2-3}
- & Molekulare Biomedizin (B.Sc.) & Magenta \\
-\cline{2-3}
- & Physiotherapie (B.Sc.) & Magenta \\
-\hline
-\end{tabular}
+    \begin{tabular}{l|l|l}
+    \textbf{Fachbereich} & \textbf{Studiengang} & \textbf{Einbandfarbe} \\
+    \hline
+    \multirow{5}{*}{Ingenieurwesen} & Elektrotechnik (B.Eng.) & Schwarz \\
+    \cline{2-3}
+    & Informatik (B.Sc.) & Hellgrün \\
+    \cline{2-3}
+    & Maschinenbau (B.Eng.), alle Fachrichtungen & Dunkelblau \\
+    \cline{2-3}
+    & Prozesstechnik (B.Sc.) & Hellgrün \\
+    \cline{2-3}
+    & Wirtschaftsingenieurwesen (B.Eng.) & Dunkelgrün \\
+    \cline{2-3}
+    & Alle Masterstudiengänge & Dunkelblau \\
+    \hline
+    \multirow{17}{*}{\begin{tabular}[c]{@{}l@{}}Wirtschaft,\\ Psychologie \&\\ Recht\end{tabular}} & Betriebswirtschaftslehre (B.A.) & Gelb \\
+    \cline{2-3}
+    & Compliance \& Corporate Security (LL.M.) & Rot \\
+    \cline{2-3}
+    & Digital Transformation Management (M.A.) & Gelb \\
+    \cline{2-3}
+    & Entrepreneurship (M.A.) & Gelb \\
+    \cline{2-3}
+    & General Management (M.A.) & Gelb \\
+    \cline{2-3}
+    & International Business Management (M.A.) & Gelb \\
+    \cline{2-3}
+    & MBA International Business (MBA) & Gelb \\
+    \cline{2-3}
+    & Nachhaltigkeitsmanagement (B.A.) & Gelb \\
+    \cline{2-3}
+    & Psychologie (B.Sc.) & Orange \\
+    \cline{2-3}
+    & Steuerrecht (LL.M.) & Rot \\
+    \cline{2-3}
+    & Unternehmensmanagement (B.A.) & Gelb \\
+    \cline{2-3}
+    & Werteorientierte Unternehmensführung (M.Sc.) & Gelb \\
+    \cline{2-3}
+    & Wirtschaftsinformatik (B.Sc.) & Grau \\
+    \cline{2-3}
+    & Wirtschaftsinformatik (M.Sc.) & Grau \\
+    \cline{2-3}
+    & Wirtschaftspsychologie (B.Sc.) & Orange \\
+    \cline{2-3}
+    & Wirtschaftspsychologie (M.Sc.) & Orange \\
+    \cline{2-3}
+    & Wirtschaftsrecht (LL.B.) & Rot \\
+    \hline
+    \multirow{6}{*}{\begin{tabular}[c]{@{}l@{}}Medien, Marketing \&\\ Innovation\end{tabular}} & Digital Business Management (M.A.) & Weiß \\
+    \cline{2-3}
+    & International Marketing \& Media Management (M.A.) & Weiß \\
+    \cline{2-3}
+    & Media \& Marketing Management (B.A.) & Weiß \\
+    \cline{2-3}
+    & Mediendesign (B.A.) & Braun oder eigene \\
+    \cline{2-3}
+    & User Experience Design (M.A.) & Weiß oder eigene \\
+    \hline
+    \multirow{5}{*}{\begin{tabular}[c]{@{}l@{}}Medizinökonomie \&\\ Gesundheit\end{tabular}} & Erweiterte Pflegepraxis (B.Sc.) & Magenta \\
+    \cline{2-3}
+    & Gesundheitsökonomie (M.Sc.) & Magenta \\
+    \cline{2-3}
+    & \begin{tabular}[c]{@{}l@{}}Medizinökonomie \& Digitales Management (B.Sc.)\\ (ehem. Medizinökonomie)\end{tabular} & Magenta \\
+    \cline{2-3}
+    & Molekulare Biomedizin (B.Sc.) & Magenta \\
+    \cline{2-3}
+    & Physiotherapie (B.Sc.) & Magenta \\
+    \hline
+    \end{tabular}
 \caption{Übersicht der Einbandfarben für Haus- und Abschlussarbeiten an der Rheinischen Hochschule Köln.}
 \end{table}
 
@@ -204,8 +213,9 @@ Ihr Publikum freut sich über einen einheitlichen gestalterischen Duktus bei Tab
 
 Unmittelbar unter jeder Tabelle und Abbildung steht eine nummerierte Unterschrift. Achten Sie darauf, dass diese Bild- oder Tabellenunterschrift nicht erst auf der folgenden Seite steht. Bitte kontrollieren Sie mit der Praktische(n) Anleitung: Zitieren in wissenschaftlichen Arbeiten der Rheinischen Hochschule oder dem Chicago Manual of Style, dem Reference Guide des IEEE bzw. dem Publication Manual der APA, ob Sie Ihre Bildunterschriften korrekt geschrieben haben.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
+\includegraphics[width=0.5\textwidth]{bilder/Libelle-Sichtfeld}
 \caption[Veranschaulichung des Panorama-Sichtfelds einer Libelle, die visuelle Reize ihrer Umwelt mit zwei komplexen Facettenaugen und drei einfachen Linsenaugen aufnimmt]{Veranschaulichung des Panorama-Sichtfelds einer Libelle, die visuelle Reize ihrer Umwelt mit zwei komplexen Facettenaugen und drei einfachen Linsenaugen aufnimmt, Quelle: Journal of Neuroscience 28, Nr. 11 (12. März 2008), Titelbild, Quelle: https://www.jneurosci.org/content/28/11.cover-expansion.}
 \label{fig:libelle}
 \end{figure}
@@ -221,8 +231,9 @@ Wie Sie Ihr Literaturverzeichnis korrekt aufbauen, finden Sie in der Praktische(
 
 Alle anderen Verzeichnisse sind einfache tabellarische Listen, die Sie nach dem Muster erstellen, welches Sie in Abbildung \ref{fig:verzeichnisse} finden:
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
+\includegraphics[width=\textwidth]{bilder/Verzeichnisse}
 \caption[Muster für die Darstellung von Abbildungs-, Tabellen-, Formel- und Symbolverzeichnissen]{Muster für die Darstellung von Abbildungs-, Tabellen-, Formel- und Symbolverzeichnissen, eigene Darstellung.}
 \label{fig:verzeichnisse}
 \end{figure}

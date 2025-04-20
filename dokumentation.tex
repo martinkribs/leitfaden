@@ -23,12 +23,6 @@
 \usepackage{microtype} % Verbessert die Lesbarkeit und Silbentrennung.
 \usepackage{fontspec} % Für die Verwendung von TrueType- und OpenType-Schriften.
 
-% Hyperlinks
-\usepackage[hidelinks]{hyperref}% Fügt klickbare Hyperlinks ein, ohne sie farblich hervorzuheben.
-
-% Abkürzungen
-\usepackage[footnote,printonlyused]{acronym} % Verwaltung von Abkürzungen mit Fußnotenoption.
-
 % Kopf- und Fußzeilen
 \usepackage{fancyhdr} % Ermöglicht die Gestaltung von Kopf- und Fußzeilen.
 
@@ -44,7 +38,7 @@
 \usepackage{enumitem} % Anpassung von Listen und Aufzählungen.
 
 % Literaturverwaltung
-\usepackage[style=chicago-notes, backend=biber, sorting=nyt, dashed=false, giveninits=true]{biblatex} % Für Literaturverzeichnisse nach Chicago-Stil mit Fußnoten.
+\usepackage[notes,backend=biber,autocite=footnote,ibidtracker=false]{biblatex-chicago} % Für Literaturverzeichnisse nach Chicago-Stil (Notes and Bibliography).
 
 % Zitate
 \usepackage{csquotes} % Korrekte Darstellung von Zitaten, z. B. Anführungszeichen.
@@ -53,16 +47,17 @@
 \usepackage[hang,flushmargin,bottom,multiple]{footmisc} % Keine Einrückung, mehr Abstand zwischen Fußnoten
 \setlength{\footnotesep}{12pt} % Abstand zwischen Fußnoten
 
-% Fußnotenzahlen mit Punkt danach
-\makeatletter
-\renewcommand\@makefnmark{\mbox{\normalfont\@thefnmark.}}
-\makeatother
+% Zeilenabstand
+\usepackage[onehalfspacing]{setspace} % Erzeugt 1,5-fachen Zeilenabstand.
+
+% Hyperlinks
+\usepackage[hidelinks]{hyperref}% Fügt klickbare Hyperlinks ein, ohne sie farblich hervorzuheben.
 
 % Positionierung
 \usepackage{float} % Präzise Platzierung von Tabellen und Abbildungen.
 
-% Zeilenabstand
-\usepackage[onehalfspacing]{setspace} % Erzeugt 1,5-fachen Zeilenabstand.
+% Abkürzungen
+\usepackage{acronym} % Verwaltung von Abkürzungen
 
 % Glossare
 \usepackage[toc=false]{glossaries-extra} % Verwaltung von Glossaren ohne Inhaltsverzeichnis-Eintrag.
@@ -87,6 +82,9 @@
 
 % Nummerierungsanpassung
 \usepackage{chngcntr} % Ermöglicht Änderungen der Nummerierung von Kapiteln und Abschnitten.
+\counterwithout{figure}{chapter} % Abbildungen durchgehend nummerieren (ohne Kapitelpräfix)
+\counterwithout{footnote}{chapter} % Fußnoten durchgehend nummerieren (ohne Kapitelpräfix)
+\counterwithout{table}{chapter} % Tabellen durchgehend nummerieren (ohne Kapitelpräfix)
 
 % Inhaltsverzeichnis
 \usepackage{tocloft} % Anpassung des Layouts des Inhaltsverzeichnisses.
@@ -116,17 +114,17 @@
 \setlength{\parskip}{6pt}             % 6pt Abstand nach jedem Absatz
 
 % Anpassung \listoffigures
-\renewcommand{\cftloftitlefont}{\Large\bfseries}
+\renewcommand{\cftloftitlefont}{\normalsize\bfseries}
 \renewcommand{\cftbeforeloftitleskip}{10pt}
 \renewcommand{\cftafterloftitleskip}{10pt}
 
 % Anpassung \listoftables
-\renewcommand{\cftlottitlefont}{\Large\bfseries}
+\renewcommand{\cftlottitlefont}{\normalsize\bfseries}
 \renewcommand{\cftbeforelottitleskip}{10pt}
 \renewcommand{\cftafterlottitleskip}{10pt}
 
 % Anpassung \tableofcontents
-\renewcommand{\cfttoctitlefont}{\Large\bfseries}
+\renewcommand{\cfttoctitlefont}{\normalsize\bfseries}
 \renewcommand{\cftbeforetoctitleskip}{10pt}
 \renewcommand{\cftaftertoctitleskip}{10pt}
 
@@ -135,9 +133,13 @@
 \renewcommand{\cftchapdotsep}{\cftdotsep}
 \renewcommand{\cftsecaftersnum}{.}
 
+% Präfixe für Abbildungs- und Tabellenverzeichnis
+\renewcommand{\cftfigpresnum}{Abb.~}
+\renewcommand{\cfttabpresnum}{Tab.~}
+
 % Abstand nach Nummern im Abbildungs- und Tabellenverzeichnis
-\setlength{\cftfignumwidth}{3em}
-\setlength{\cfttabnumwidth}{3em}
+\setlength{\cftfignumwidth}{4em}
+\setlength{\cfttabnumwidth}{4em}
 
 % Überschriftenformatierung
 \titleformat{\chapter}
@@ -165,18 +167,14 @@
 
 % Bibliographie-Einstellungen für Chicago-Stil
 \DeclareNameAlias{sortname}{family-given}
-\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
-\DeclareDelimFormat{multinamedelim}{\space\addcomma\space}
-\DeclareDelimFormat{finalnamedelim}{\space\&\space}
 \DefineBibliographyStrings{german}{andothers = {{et\,al\adddot}},}
-\renewcommand{\mkbibnamefamily}[1]{\textsc{#1}}
 
 % Benutzerdefinierte Zitatbefehle
 \newcommand{\customcite}[2][]{%
   \ifblank{#1}{%
-    \footcite{#2}%
+    \autocite{#2}%
   }{%
-    \footcite[#1]{#2}%
+    \autocite[#1]{#2}%
   }%
 }
 
@@ -201,7 +199,7 @@
 \newcommand{\listpromptname}{Promptverzeichnis}
 \newlistof{prompt}{prm}{\listpromptname}
 % Formatierung des Promptverzeichnis-Titels (wie bei anderen Verzeichnissen)
-\renewcommand{\cftprmtitlefont}{\Large\bfseries}
+\renewcommand{\cftprmtitlefont}{\normalsize\bfseries}
 \renewcommand{\cftbeforeprmtitleskip}{10pt}
 \renewcommand{\cftafterprmtitleskip}{10pt}
 
@@ -215,36 +213,41 @@
 
 % Inhaltsverzeichnis-Einrückung
 \setlength{\cftsubsecindent}{1.5em}
-\setlength{\cftsubsubsecindent}{3.0em}
+\setlength{\cftsubsecindent}{3.0em}
 
 % Anhangsverzeichnis erstellen
 \newcommand{\listappendixname}{Verzeichnis der Anhänge}
 \newlistof{appendix}{app}{\listappendixname}
 
 % Formatierung des Anhangsverzeichnis-Titels (wie bei anderen Verzeichnissen)
-\renewcommand{\cftapptitlefont}{\Large\bfseries}
+\renewcommand{\cftapptitlefont}{\normalsize\bfseries}
 \renewcommand{\cftbeforeapptitleskip}{10pt}
 \renewcommand{\cftafterapptitleskip}{10pt}
 
+% Setze die Breite für Anhangsnummern im Verzeichnis
+\newlength{\appnumwidth}
+\setlength{\appnumwidth}{6em}
+
 \newcommand{\appendixentry}[1]{%
   \refstepcounter{appendix}%
-  \addcontentsline{app}{appendix}{\protect\numberline{\theappendix}#1}%
+  \addcontentsline{app}{appendix}{\protect\makebox[\appnumwidth][l]{Anhang \theappendix:}#1}%
 }
 
-% Glossar/Abkürzungsverzeichnis
+% Glossar
 \makenoidxglossaries
-\input{zusatz/glossary}
+\input{zusatz/glossar}
 \glsaddall
 % Anpassung der Kopfzeilen
 % Behält die Nummer bei nummerierten Kapiteln, entfernt nur das Wort "Kapitel"
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}}
 
-% Seitenstil für alle Seiten, einschließlich der ersten Seite eines Kapitels
+% Seitenstil für alle Seiten
 \fancypagestyle{plain}{%
   \fancyhf{} % Alle Kopf- und Fußzeilenfelder löschen
   \lhead{\nouppercase{\leftmark}} % Kapitelüberschrift oben links
   \rhead{\thepage} % Seitenzahl oben rechts
 }
+
 
 % Seitenstil für normale Seiten
 \pagestyle{fancy}
@@ -257,7 +260,7 @@
 \renewcommand{\contentsname}{Inhalt}
 \renewcommand{\listfigurename}{Abbildungsverzeichnis}
 \renewcommand{\listtablename}{Tabellenverzeichnis}
-\renewcommand{\bibname}{Quellen- und Literaturverzeichnis}
+\renewcommand{\bibname}{Literaturverzeichnis}
 
 % Setze PDF-Metadaten
 \hypersetup{
@@ -325,7 +328,7 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
     \label{sec:Abkuerzungsverzeichnis}
-    \printnoidxglossary[title={Abkürzungsverzeichnis}, type=main, nonumberlist]
+    \input{zusatz/abkuerzungen}
     \newpage
     
     % Abbildungsverzeichnis
@@ -347,6 +350,7 @@
     \listofprompt
     \newpage
 
+    \nocite{*} % Zitieren aller Quellen im Literaturverzeichnis, auch wenn sie nicht zitiert wurden. (optional) 
     % Literaturverzeichnis
     \newpage
     \phantomsection
