@@ -245,17 +245,16 @@
 % Seitenstil für alle Seiten
 \fancypagestyle{plain}{%
   \fancyhf{} % Alle Kopf- und Fußzeilenfelder löschen
-  \lhead{\nouppercase{\leftmark}} % Kapitelüberschrift oben links
-  \rhead{\thepage} % Seitenzahl oben rechts
+  \lhead{\fontsize{9}{13.5}\selectfont\nouppercase{\leftmark}} % Kapitelüberschrift oben links
+  \rhead{\fontsize{9}{13.5}\selectfont\thepage} % Seitenzahl oben rechts
 }
 
 
 % Seitenstil für normale Seiten
 \pagestyle{fancy}
-\fancyhf{} % Alle Kopf- und Fußzeilenfelder löschen
-\lhead{\nouppercase{\leftmark}} % Kapitelüberschrift oben links
-\rhead{\fontsize{9}{13.5}\selectfont\thepage} % Seitenzahl oben rechts, 9pt
-\lhead{\fancyplain{}{\nouppercase{\leftmark}}} % Kapitelüberschrift oben links
+  \fancyhf{} % Alle Kopf- und Fußzeilenfelder löschen
+  \lhead{\fontsize{9}{13.5}\selectfont\nouppercase{\leftmark}} % Kapitelüberschrift oben links
+  \rhead{\fontsize{9}{13.5}\selectfont\thepage} % Seitenzahl oben rechts
 
 % Anpassung der Verzeichnis-Überschriften
 \renewcommand{\contentsname}{Inhalt}
